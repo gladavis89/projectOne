@@ -53,22 +53,21 @@
                     <span uk-icon="icon: search; ratio: 2"></span>Search Menu</h1>
                 <br>
                 <br>
+                <p>Enter your favorite song genre or album. NASA discoveries will generate on the right the date that music was released!</p>
                 <form class="uk-grid-small" uk-grid>
                     <div class="uk-width-1-1">
-                        <input class="uk-input" type="text" placeholder="">
+                        <input class="uk-input" type="text" placeholder="" id="title">
                         <label>Song title</label>
                     </div>
                     <div class="uk-width-1-2@s">
-                        <input class="uk-input" type="text" placeholder="optional">
+                        <input class="uk-input" type="text" placeholder="optional" id="album">
                         <label>Album</label>
                     </div>
                     <div class="uk-width-1-2@s">
-                        <input class="uk-input" type="number" placeholder="optional">
+                        <input class="uk-input" type="number" placeholder="optional" id="genre">
                         <label>Genre</label>
                     </div>
-
-
-                    <input type="button" value="    Submit" class="uk-button uk-button-primary uk-text-center uk-margin-auto">
+                    <input type="button"  value="    Submit" class="uk-button uk-button-primary uk-text-center uk-margin-auto">
                 </form>
 
             </article>
@@ -77,7 +76,7 @@
                 <h1 class="uk-article-title">NASA results here, if link clicked the article fills this box. add ability to click back to results without
                     page refresh</h1>
             </article>
-            <article id="brand" class="uk-article uk-width-1-3">
+            <article id="brand" class="uk-article uk-width-1-3" id="song">
                 <h1 class="uk-article-title">Songs and info pop up here + ability to play song</h1>
             </article>
         </div>
