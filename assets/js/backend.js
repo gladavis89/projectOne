@@ -7,34 +7,34 @@
     console.log(newDate);
     
     // Use your own token (this is just an example)
-    var apiKey = 'ee76wy5X0CgOS6B9Tu4yP5HV9YJ35CucnQlOB5Nz';
-    var date = '2001-05-04'
+    // var apiKey = 'ee76wy5X0CgOS6B9Tu4yP5HV9YJ35CucnQlOB5Nz';
+    // var date = '2001-05-04'
 
-    var url = "https://api.nasa.gov/planetary/apod?api_key=" + apiKey + "&date=" + newDate + "&hd=False";
+    // var url = "https://api.nasa.gov/planetary/apod?api_key=" + apiKey + "&date=" + newDate + "&hd=False";
 
 
-    $.ajax({
-      url: url,
-      success: function(result){
-      if("copyright" in result) {
-        $("#copyright").text("Image Credits: " + result.copyright);
-      }
-      else {
-        $("#copyright").text("Image Credits: " + "Public Domain");
-      }
+    // $.ajax({
+    //   url: url,
+    //   success: function(result){
+    //   if("copyright" in result) {
+    //     $("#copyright").text("Image Credits: " + result.copyright);
+    //   }
+    //   else {
+    //     $("#copyright").text("Image Credits: " + "Public Domain");
+    //   }
       
-      if(result.media_type == "video") {
-        $("#apod_img_id").css("display", "none"); 
-        $("#apod_vid_id").attr("src", result.url);
-      }
-      else {
-        $("#apod_vid_id").css("display", "none"); 
-        $("#apod_img_id").attr("src", result.url);
-      }
-      $("#reqObject").text(url);
-      $("#returnObject").text(JSON.stringify(result, null, 4));  
-      $("#apod_explaination").text(result.explanation);
-      $("#apod_title").text(result.title);
-    }
-    });
+    //   if(result.media_type == "video") {
+    //     $("#apod_img_id").css("display", "none"); 
+    //     $("#apod_vid_id").attr("src", result.url);
+    //   }
+    //   else {
+    //     $("#apod_vid_id").css("display", "none"); 
+    //     $("#apod_img_id").attr("src", result.url);
+    //   }
+    //   $("#reqObject").text(url);
+    //   $("#returnObject").text(JSON.stringify(result, null, 4));  
+    //   $("#apod_explaination").text(result.explanation);
+    //   $("#apod_title").text(result.title);
+    // }
+    // });
     
