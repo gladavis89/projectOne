@@ -53,21 +53,24 @@
                     <span uk-icon="icon: search; ratio: 2"></span>Search Menu</h1>
                 <br>
                 <br>
-                <p>Enter your favorite song genre or album. NASA discoveries will generate on the right the date that music was released!</p>
-                <form class="uk-grid-small" uk-grid>
+                <p>Enter your favorite song genre or album. NASA discoveries will generate on the right the date that music
+                    was released!</p>
+                <form class="uk-grid-small uk-form-large" uk-grid>
                     <div class="uk-width-1-1">
-                        <input class="uk-input" type="text" placeholder="" id="title">
-                        <label>Song title</label>
+                        <input class="uk-input" type="text" placeholder="" id="input">
+                        <label></label>
                     </div>
                     <div class="uk-width-1-2@s">
-                        <input class="uk-input" type="text" placeholder="optional" id="album">
-                        <label>Album</label>
+
+                        <select id="drop" class="uk-select uk-form-large" name="Options" >
+                            <option id="song" value="Song">Song Title</option>
+                            <option id="album" value="Album">Album</option>
+                            <option id="artist" value="Artist">Artist</option>
+                           
+                        </select>
                     </div>
-                    <div class="uk-width-1-2@s">
-                        <input class="uk-input" type="number" placeholder="optional" id="genre">
-                        <label>Genre</label>
-                    </div>  
-                    <input type="button"  value="    Submit" class="uk-button uk-button-primary uk-text-center uk-margin-auto">
+
+                    <input id="submit" type="button" value="    Submit" class="uk-button uk-button-primary uk-text-center uk-margin-auto">
                 </form>
 
             </article>
@@ -84,6 +87,7 @@
     </div>
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script src="assets/js/uikit.min.js"></script>
     <script src="assets/js/uikit-icons.min.js"></script>
