@@ -1,10 +1,10 @@
-    var publishedDate = "Sun, 27 Jul 2008 15:44:58 +0000";
-    var regex = /^[a-zA-Z]+\,[\s]+([\d]+)[\s]+([A-Za-z]+)[\s]+([\d]+)/;
-    var result = publishedDate.match(regex);
-    var month = "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(result[2]) / 3 + 1;
-    if (month < 10) month = "0"+month;
-    var newDate = result[3]+"-"+month+"-"+result[1];
-    console.log(newDate);
+    // var publishedDate = "Sun, 27 Jul 2008 15:44:58 +0000";
+    // var regex = /^[a-zA-Z]+\,[\s]+([\d]+)[\s]+([A-Za-z]+)[\s]+([\d]+)/;
+    // var result = publishedDate.match(regex);
+    // var month = "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(result[2]) / 3 + 1;
+    // if (month < 10) month = "0"+month;
+    // var newDate = result[3]+"-"+month+"-"+result[1];
+    // console.log(newDate);
     
     // Use your own token (this is just an example)
     // var apiKey = 'ee76wy5X0CgOS6B9Tu4yP5HV9YJ35CucnQlOB5Nz';
