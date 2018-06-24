@@ -1,0 +1,310 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Project One</title>
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <style type="text/css">
+    #login,
+    #loggedin {
+      display: none;
+    }
+
+    .text-overflow {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 500px;
+    }
+
+    #body {
+      background: url("assets/img/alvaro-pinot-502465-unsplash.jpg");
+      background-size: cover;
+      min-height: 960px;
+
+    }
+  </style>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/uikit.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+  <script src="assets/js/handlebars-v4.0.11.js"></script>
+
+</head>
+
+<body id="body">
+  <div class="container">
+    <div id="login">
+      <h1>This is an example of the Authorization Code flow</h1>
+      <a href="/login" class="btn btn-primary">Log in with Spotify</a>
+    </div>
+    <div id="loggedin">
+      <div id="user-profile">
+      </div>
+      <div id="oauth">
+      </div>
+      <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
+    </div>
+  </div>
+
+
+  <div id="panel">
+    <header style="margin: 0 10px 10px 10px">
+
+      <nav class="uk-navbar-container uk-margin-auto" uk-navbar style="background-color: rgba(2, 39, 39, 0.479)">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li>
+              <a href="index.html">
+                <span uk-icon="home"></span>
+                <div class="uk-margin-left" style="border-bottom: solid 3px beige">Home</div>
+              </a>
+            </li>
+            <li>
+              <a href="fav.html">Favorite Songs</a>
+            </li>
+            <li>
+              <a href="visited.html">Favorite NASA events</a>
+            </li>
+          </ul>
+
+        </div>
+        <div class="uk-navbar-nav">
+          <img class="uk-position-right" src="assets/img/aziz-acharki-549137-unsplash.jpg" width="124px" />
+        </div>
+      </nav>
+
+
+    </header>
+    <div class="uk-grid uk-margin-auto" id="main">
+      <article class="uk-article uk-width-1-3 uk-margin-top" style="height: 500px; width: 33%" id="searchform">
+
+        <h1 class="uk-article-title">
+          <span uk-icon="icon: search; ratio: 2"></span>Search Menu</h1>
+        <br>
+        <br>
+        <p>Enter your favorite song genre or album. NASA discoveries will generate on the right the date that music was released!</p>
+        <form class="uk-grid-small" uk-grid>
+          <div class="uk-width-1-1">
+            <input class="uk-input" type="text" placeholder="" id="title">
+            <label>Song title</label>
+          </div>
+          <div class="uk-width-1-2@s">
+            <input class="uk-input" type="text" placeholder="optional" id="album">
+            <label>Album</label>
+          </div>
+          <div class="uk-width-1-2@s">
+            <input class="uk-input" type="text" placeholder="optional" id="artist">
+            <label>Artist</label>
+          </div>
+          <input type="button" value="Submit" class="uk-button uk-button-primary uk-text-center uk-margin-auto">
+        </form>
+
+      </article>
+
+      <article class="uk-article uk-width-3-5 uk-margin-top" style="height: 820px" id="results">
+        <h1 class="uk-article-title">NASA results here, if link clicked the article fills this box. add ability to click back to results without page
+          refresh
+        </h1>
+      </article>
+      <article id="brand" class="uk-article uk-width-1-3">
+        <h1 class="uk-article-title">Songs</h1>
+        <br>
+
+
+        <script>$(document).on("click", ".moviePoster", function () {
+          console.log("You got music");
+          $('#player').empty();
+          var token = "BQDU5jITUKdSlK8efa4kn48v1i-A2vqdn6YXYP8haIfxvfS4XaaTDc0KEA5xvxqB8lSlHxoOZwBmDoibuoJmRS0QtVFyCfhcyb2HYSJrI9R1W3k7v9vtFsyVlRJR4zKyClPBV_8B9EWlgYnGaVYiBb4OvADY7NtClQt9BA";
+          var musicG = $(this).attr("data-music");
+          var musicUrl = 'https://api.spotify.com/v1/search?q=' + musicG + '&type=playlist'
+         $.ajax({
+          url: musicUrl,
+          method: 'GET',
+          headers: {
+              'Authorization': 'Bearer ' + token
+          },      
+          success: function (playlist) {
+              console.log(playlist);
+              var randomMusic = playlist.playlists.items[Math.floor(Math.random() * playlist.playlists.items.length)].uri;
+              console.log(randomMusic);
+              var musicDiv = $("<div>");
+              var musicIframe = $('<iframe src="https://open.spotify.com/embed?uri=' + randomMusic + '" width="300" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media">' + '</iframe>');
+              $("#player").append(musicDiv);
+              musicDiv.append(musicIframe);
+          },
+          error: function () {
+              console.log("It failed");
+          }
+          }); 
+      });
+          </script>
+
+
+
+      </article>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+  <script id="user-profile-template" type="text/x-handlebars-template">
+      <h1>Logged in as {{display_name}}</h1>
+      <div class="media">
+        <div class="pull-left">
+          <img class="media-object" width="150" src="{{images.0.url}}" />
+        </div>
+        <div class="media-body">
+          <dl class="dl-horizontal">
+            <dt>Display name</dt><dd class="clearfix">{{display_name}}</dd>
+            <dt>Id</dt><dd>{{id}}</dd>
+            <dt>Email</dt><dd>{{email}}</dd>
+            <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd>
+            <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd>
+            <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd>
+            <dt>Country</dt><dd>{{country}}</dd>
+          </dl>
+        </div>
+      </div>
+    </script>
+
+  <script id="oauth-template" type="text/x-handlebars-template">
+      <h2>oAuth info</h2>
+      <dl class="dl-horizontal">
+        <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
+        <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}</dd>
+      </dl>
+    </script>
+
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script>
+    (function () {
+
+      /**
+       * Obtains parameters from the hash of the URL
+       * @return Object
+       */
+      function getHashParams() {
+        var hashParams = {};
+        var e, r = /([^&;=]+)=?([^&;]*)/g,
+          q = window.location.hash.substring(1);
+        while (e = r.exec(q)) {
+          hashParams[e[1]] = decodeURIComponent(e[2]);
+        }
+        return hashParams;
+      }
+
+      var userProfileSource = document.getElementById('user-profile-template').innerHTML,
+        userProfileTemplate = Handlebars.compile(userProfileSource),
+        userProfilePlaceholder = document.getElementById('user-profile');
+
+      var oauthSource = document.getElementById('oauth-template').innerHTML,
+        oauthTemplate = Handlebars.compile(oauthSource),
+        oauthPlaceholder = document.getElementById('oauth');
+
+      var params = getHashParams();
+
+      var access_token = params.access_token,
+        refresh_token = params.refresh_token,
+        error = params.error;
+
+      if (error) {
+        alert('There was an error during the authentication');
+      } else {
+        if (access_token) {
+          // render oauth info
+          oauthPlaceholder.innerHTML = oauthTemplate({
+            access_token: access_token,
+            refresh_token: refresh_token
+          });
+
+          $.ajax({
+            url: 'https://api.spotify.com/v1/me',
+            headers: {
+              'Authorization': 'Bearer ' + access_token
+            },
+            success: function (response) {
+              userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+
+              $('#login').hide();
+              $('#loggedin').show();
+            }
+          });
+        } else {
+          // render initial screen
+          $('#login').show();
+          $('#loggedin').hide();
+        }
+
+        document.getElementById('obtain-new-token').addEventListener('click', function () {
+          $.ajax({
+            url: '/refresh_token',
+            data: {
+              'refresh_token': refresh_token
+            }
+          }).done(function (data) {
+            access_token = data.access_token;
+            oauthPlaceholder.innerHTML = oauthTemplate({
+              access_token: access_token,
+              refresh_token: refresh_token
+            });
+          });
+        }, false);
+      }
+
+
+      $(".uk-button").on("click", function () {
+
+        var usersearch = $("#title").val().trim() + $("#album").val().trim() + $("#artist").val().trim();
+
+        var queryurl = 'https://api.spotify.com/v1/search?q=' + usersearch + '&type=track,album,artist&limit=1';
+
+
+        $.ajax({
+          url: queryurl,
+          headers: {
+            'Authorization': 'Bearer ' + access_token
+          },
+          method: "GET"
+        }).then(function (response) {
+
+          var tracks = response.tracks.items;
+
+          console.log(tracks);
+
+          for (var i = 0; i < 5; i++) {
+            $("#brand").prepend("<div>" + tracks[i].album.release_date + "</div>");
+          }
+        });
+
+// <!-- 
+//         $.ajax({
+//           url: 'https://api.spotify.com/v1/users/gladavis89/playlists'
+//           method: "POST"
+//         }).then(function (response) {
+
+//           console.log(response);
+
+//         }); -->
+
+
+      });
+    })();
+
+  </script>
+
+  <script src="assets/js/uikit.min.js"></script>
+  <script src="assets/js/uikit-icons.min.js"></script>
+  <script src="assets/js/frontend.js"></script>
+  <script src="assets/js/backend.js"></script>
+
+</body>
+
+</html>
