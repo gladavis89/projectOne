@@ -17,6 +17,8 @@ $.ajax({
   console.log(response)
 
   console.log(response.track.wiki.published);
+  $('#publication-date').text("Publication Date: " + response.track.wiki.published);
+  
   var regex = /^([\d]+)[\s]+([A-Za-z]+)[\s]+([\d]+)/;
   var result = response.track.wiki.published.match(regex);
   var month = "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(result[2]) / 3 + 1;
