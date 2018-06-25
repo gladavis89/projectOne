@@ -66,6 +66,10 @@ $(document).ready(function () {
           var nasaResultsID = $("#nasa-results");
           nasaResultsID.append(addToFavsButton);
 
+          $('#add-to-fav-button').on("click", function (event){
+            event.preventDefault();
+            console.log("Add to favorites button pressed!")
+          });
         }// end success: function (result) {
       });
 
