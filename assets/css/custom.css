@@ -36,7 +36,8 @@ article {
     justify-content: inherit;
 }
 #results {
-    width: 62%
+    width: 62%;
+    overflow: auto;
 }
 #searchform{
     justify-content: center;
