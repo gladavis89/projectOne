@@ -2,9 +2,9 @@ $("#submit").click(function(){
 
 console.log($("#drop").val())
 console.log($("#input").val())
-var input = $('#input').val()
-var option = $("#drop").val()
-var artist = $("#artist").val()
+var input = $('#input').val().trim();
+var option = $("#drop").val().trim();
+var artist = $("#artist").val().trim();
 var album = 'album.getInfo&album='
 var song = 'track.getInfo&track='
 
