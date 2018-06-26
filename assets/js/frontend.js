@@ -1,5 +1,17 @@
 $(document).ready(function () {
   console.log("frontend.js ready!");
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDFZTP39DLUwWyzNUjuEWgTcd00tyBRkVc",
+    authDomain: "projectone-12b5c.firebaseapp.com",
+    databaseURL: "https://projectone-12b5c.firebaseio.com",
+    projectId: "projectone-12b5c",
+    storageBucket: "projectone-12b5c.appspot.com",
+    messagingSenderId: "237064729228"
+  };
+  firebase.initializeApp(config);
+
+  var db = firebase.database();
 
   $("#submit").click(function () {
 
@@ -68,7 +80,11 @@ $(document).ready(function () {
 
           $('#add-to-fav-button').on("click", function (event){
             event.preventDefault();
-            console.log("Add to favorites button pressed!")
+            console.log("Add to favorites button pressed!");
+
+            db.ref().push(result); console.log("result pushed to the database")
+
+            addToFavsButton.empty();
           });
         }// end success: function (result) {
       });
