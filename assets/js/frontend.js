@@ -30,7 +30,7 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
       console.log(response)
-
+      $('#nasa-results').empty();
       console.log(response.track.wiki.published);
       $('#publication-date').text("Publication Date: " + response.track.wiki.published);
 
@@ -84,7 +84,6 @@ $(document).ready(function () {
 
             db.ref().push(result); console.log("result pushed to the database")
 
-            addToFavsButton.empty();
           });
         }// end success: function (result) {
       });
