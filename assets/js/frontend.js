@@ -18,6 +18,17 @@ $.ajax({
 
   console.log(response.track.wiki.published);
   $('#publication-date').text("Publication Date: " + response.track.wiki.published);
+
+  console.log(response.track.album.artist);
+  $('#bandName').text("Artist: " + response.track.album.artist);
+
+  console.log(response.track.wiki.summary);
+  $('#summary').text("Summary: " + response.track.wiki.summary);
+
+  console.log(response.track.url);
+  $('#databaseUrl').attr("href", response.track.url);
+  $('#databaseUrl').attr("target", "_blank");
+  $('#databaseUrl').text("Link to video: " + response.track.url);
   
   var regex = /^([\d]+)[\s]+([A-Za-z]+)[\s]+([\d]+)/;
   var result = response.track.wiki.published.match(regex);
