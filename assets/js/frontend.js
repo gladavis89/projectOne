@@ -47,8 +47,8 @@ $(document).ready(function () {
 
     console.log("You got music");
         $('#player').empty();
-        var musicG = $("#input").val().trim();
-        var musicUrl = 'https://api.spotify.com/v1/search?q=' + musicG + '&type=track&limit=1'
+        var musicG = $("#input").val().trim() + $("#artist").val().trim();
+        var musicUrl = 'https://api.spotify.com/v1/search?q=' + musicG + '&type=track,artist&limit=1'
        $.ajax({
         url: musicUrl,
         method: 'GET',
@@ -57,7 +57,7 @@ $(document).ready(function () {
         },      
         success: function (playlist) {
             console.log(playlist);
-            var music = $("#input").val().trim();
+            var music = playlist.val().tracks.items["0"].uri;
             console.log(music);
             var musicDiv = $("<div>");
             var musicIframe = $('<iframe src="https://open.spotify.com/embed?uri=' + music + '" width="300" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media">' + '</iframe>');
