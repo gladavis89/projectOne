@@ -1,14 +1,26 @@
-<<<<<<< HEAD
+
 $(document).ready(function () {
   console.log("frontend.js ready!");
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDFZTP39DLUwWyzNUjuEWgTcd00tyBRkVc",
+    authDomain: "projectone-12b5c.firebaseapp.com",
+    databaseURL: "https://projectone-12b5c.firebaseio.com",
+    projectId: "projectone-12b5c",
+    storageBucket: "projectone-12b5c.appspot.com",
+    messagingSenderId: "237064729228"
+  };
+  firebase.initializeApp(config);
+
+  var db = firebase.database();
 
   $("#submit").click(function () {
 
     console.log($("#drop").val())
     console.log($("#input").val())
-    var input = $('#input').val()
-    var option = $("#drop").val()
-    var artist = $("#artist").val()
+    var input = $('#input').val().trim();
+    var option = $("#drop").val().trim();
+    var artist = $("#artist").val().trim();
     var album = 'album.getInfo&album='
     var song = 'track.getInfo&track='
 
@@ -19,9 +31,22 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
       console.log(response)
-
+      $('#nasa-results').empty();
       console.log(response.track.wiki.published);
       $('#publication-date').text("Publication Date: " + response.track.wiki.published);
+
+     
+      console.log(response.track.album.artist);
+      $('#bandName').text("Artist: " + response.track.album.artist);
+
+      console.log(response.track.wiki.summary);
+      $('#summary').text("Summary: " + response.track.wiki.summary);
+
+      console.log(response.track.url);
+      $('#databaseUrl').attr("href", response.track.url);
+      $('#databaseUrl').attr("target", "_blank");
+      $('#databaseUrl').text("Link to video: " + response.track.url);
+  
 
       var regex = /^([\d]+)[\s]+([A-Za-z]+)[\s]+([\d]+)/;
       var result = response.track.wiki.published.match(regex);
@@ -67,6 +92,13 @@ $(document).ready(function () {
           var nasaResultsID = $("#nasa-results");
           nasaResultsID.append(addToFavsButton);
 
+          $('#add-to-fav-button').on("click", function (event){
+            event.preventDefault();
+            console.log("Add to favorites button pressed!");
+
+            db.ref().push(result); console.log("result pushed to the database")
+
+          });
         }// end success: function (result) {
       });
 
@@ -74,64 +106,4 @@ $(document).ready(function () {
   })
 
 });
-=======
-$("#submit").click(function(){
-
-console.log($("#drop").val())
-console.log($("#input").val())
-var input = $('#input').val().trim();
-var option = $("#drop").val().trim();
-var artist = $("#artist").val().trim();
-var album = 'album.getInfo&album='
-var song = 'track.getInfo&track='
-
-
-
-$.ajax({
-  url: "http://ws.audioscrobbler.com//2.0/?method="+option+".getInfo&artist="+artist+"&"+option+"="+input+"&autocorrect[0|1]&api_key=5a85a72189c33df2b02663c378c7f775&format=json",
-  method: "GET"
-}).then(function(response) {
-  console.log(response)
-
-  console.log(response.track.wiki.published);
-  $('#publication-date').text("Publication Date: " + response.track.wiki.published);
-  
-  var regex = /^([\d]+)[\s]+([A-Za-z]+)[\s]+([\d]+)/;
-  var result = response.track.wiki.published.match(regex);
-  var month = "JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(result[2]) / 3 + 1;
-  if (month < 10) month = "0"+month;
-  var newDate = result[3]+"-"+month+"-"+result[1];
-  console.log(newDate);
-
-  var apiKey = 'ee76wy5X0CgOS6B9Tu4yP5HV9YJ35CucnQlOB5Nz';
-
-  var url = "https://api.nasa.gov/planetary/apod?api_key=" + apiKey + "&date=" + newDate + "&hd=False";
-
-
-  $.ajax({
-    url: url,
-    success: function(result){
-    if("copyright" in result) {
-      $("#copyright").text("Image Credits: " + result.copyright);
-    }
-    else {
-      $("#copyright").text("Image Credits: " + "Public Domain");
-    }
-    
-    if(result.media_type == "video") {
-      $("#apod_img_id").css("display", "none"); 
-      $("#apod_vid_id").attr("src", result.url);
-    }
-    else {
-      $("#apod_vid_id").css("display", "none"); 
-      $("#apod_img_id").attr("src", result.url);
-    }
-  
-    $("#apod_explaination").text(result.explanation);
-    $("#apod_title").text(result.title);
-  }
-  });
-
-})
-})
->>>>>>> 9b24f9b64b7537719e4ec927712113cc6b76124e
+ 
