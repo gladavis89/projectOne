@@ -13,7 +13,62 @@ $(document).ready(function () {
 
   var db = firebase.database();
 
+  const hash = window.location.hash
+      .substring(1)
+      .split('&')
+      .reduce(function (initial, item) {
+        if (item) {
+          var parts = item.split('=');
+          initial[parts[0]] = decodeURIComponent(parts[1]);
+        }
+        return initial;
+      }, {});
+    window.location.hash = '';
+
+    // Set token
+    let _token = hash.access_token;
+
+    const authEndpoint = 'https://accounts.spotify.com/authorize';
+
+    // Replace with your app's client ID, redirect URI and desired scopes
+    const clientId = 'b48b4e2e8c06421e862dce33a2140648';
+    const redirectUri = 'https://gladavis89.github.io/projectOne/';
+    const scopes = [
+      'user-top-read'
+    ];
+    // &scope=${scopes.join('%20')}&show_dialog=true
+    // If there is no token, redirect to Spotify authorization
+    if (!_token) {
+      window.location = `${authEndpoint}?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}`;
+    }
+
+
   $("#submit").click(function () {
+
+    console.log("You got music");
+        $('#player').empty();
+        var musicG = $(this).attr("data-music");
+        var musicUrl = 'https://api.spotify.com/v1/search?q=' + musicG + '&type=playlist'
+       $.ajax({
+        url: musicUrl,
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + _token
+        },      
+        success: function (playlist) {
+            console.log(playlist);
+            var music = $("#song").val().trim();
+            console.log(music);
+            var musicDiv = $("<div>");
+            var musicIframe = $('<iframe src="https://open.spotify.com/embed?uri=' + music + '" width="300" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media">' + '</iframe>');
+            $("#brand").append(musicDiv);
+            musicDiv.append(musicIframe);
+        },
+        error: function () {
+            console.log("It failed");
+        }
+        }); 
+    });
 
     console.log($("#drop").val())
     console.log($("#input").val())
@@ -104,5 +159,5 @@ $(document).ready(function () {
     })
   })
 
-});
+;
 
