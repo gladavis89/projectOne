@@ -57,7 +57,7 @@ $(document).ready(function () {
         },      
         success: function (playlist) {
             console.log(playlist);
-            var music = $("#song").val().trim();
+            var music = $("#input").val().trim();
             console.log(music);
             var musicDiv = $("<div>");
             var musicIframe = $('<iframe src="https://open.spotify.com/embed?uri=' + music + '" width="300" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media">' + '</iframe>');
