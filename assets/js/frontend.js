@@ -47,8 +47,8 @@ $(document).ready(function () {
 
     console.log("You got music");
         $('#player').empty();
-        var musicG = $(this).attr("data-music");
-        var musicUrl = 'https://api.spotify.com/v1/search?q=' + musicG + '&type=playlist'
+        var musicG = $("#input").val().trim();
+        var musicUrl = 'https://api.spotify.com/v1/search?q=' + musicG + '&type=track'
        $.ajax({
         url: musicUrl,
         method: 'GET',
