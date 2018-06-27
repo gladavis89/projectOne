@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   console.log("frontend.js ready!");
   // Initialize Firebase
@@ -106,3 +105,10 @@ $(document).ready(function () {
   })
 
 });
+<<<<<<< HEAD
+<<<<<<< HEAD
+ 
+=======
+>>>>>>> cc81101e14bd0e56a3176c6afba3f3914c31c217
+=======
+>>>>>>> cd4482736f7dedc3abcf72d884c7397329fc20d5
