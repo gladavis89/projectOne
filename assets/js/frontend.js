@@ -17,9 +17,9 @@ $(document).ready(function () {
 
     console.log($("#drop").val())
     console.log($("#input").val())
-    var input = $('#input').val()
-    var option = $("#drop").val()
-    var artist = $("#artist").val()
+    var input = $('#input').val().trim();
+    var option = $("#drop").val().trim();
+    var artist = $("#artist").val().trim();
     var album = 'album.getInfo&album='
     var song = 'track.getInfo&track='
 
@@ -33,6 +33,19 @@ $(document).ready(function () {
       $('#nasa-results').empty();
       console.log(response.track.wiki.published);
       $('#publication-date').text("Publication Date: " + response.track.wiki.published);
+
+     
+      console.log(response.track.album.artist);
+      $('#bandName').text("Artist: " + response.track.album.artist);
+
+      console.log(response.track.wiki.summary);
+      $('#summary').text("Summary: " + response.track.wiki.summary);
+
+      console.log(response.track.url);
+      $('#databaseUrl').attr("href", response.track.url);
+      $('#databaseUrl').attr("target", "_blank");
+      $('#databaseUrl').text("Link to video: " + response.track.url);
+  
 
       var regex = /^([\d]+)[\s]+([A-Za-z]+)[\s]+([\d]+)/;
       var result = response.track.wiki.published.match(regex);

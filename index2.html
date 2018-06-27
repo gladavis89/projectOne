@@ -12,7 +12,6 @@
             background: url("assets/img/alvaro-pinot-502465-unsplash.jpg");
             background-size: cover;
             min-height: 960px;
-
         }
     </style>
 </head>
@@ -20,7 +19,8 @@
 <body id="body">
     <div id="panel">
         <header style="margin: 0 10px 10px 10px">
-            <nav class="uk-navbar-container uk-margin-auto" uk-navbar style="background-color: rgba(2, 39, 39, 0.801)">
+
+            <nav class="uk-navbar-container uk-margin-auto" uk-navbar style="background-color: rgba(2, 39, 39, 0.479)">
                 <div class="uk-navbar-left">
                     <ul class="uk-navbar-nav">
                         <li>
@@ -30,16 +30,16 @@
                             </a>
                         </li>
                         <li>
-                            <a href="fav.html">Favorites</a>
+                            <a href="fav.html">Favorite Songs</a>
                         </li>
-                        <!-- <li>
+                        <li>
                             <a href="visited.html">Favorite NASA events</a>
-                        </li> -->
+                        </li>
                     </ul>
 
                 </div>
                 <div class="uk-navbar-nav">
-                    <img class="uk-position-right" src="assets/img/spaceman.jpg" width="120px" />
+                    <img class="uk-position-right" src="assets/img/aziz-acharki-549137-unsplash.jpg" width="124px" />
                 </div>
             </nav>
 
@@ -55,16 +55,17 @@
                 <p>Enter your favorite song genre or album. NASA discoveries will generate on the right the date that music
                     was released!</p>
                 <form class="uk-grid-small uk-form-large" uk-grid>
-                    <div class="uk-width-1-1">
-                        <input class="uk-input" type="text" placeholder="Song Title" id="input">
+                    <div class="uk-width-1-2">
+                        <input class="uk-input" type="text" placeholder="" id="input">
                         <label></label>
                         <input class="uk-input" id="artist" type="text" placeholder="Artist">
                     </div>
-                    <div class="uk-width-1-1@s">
+                    <div class="uk-width-1-2@s">
 
-                        
-                            <option id="drop" value="track"></option>
-                            
+                        <select id="drop" class="uk-select" name="Options">
+                            <option id="song" value="track">Song Title</option>
+                            <option id="album" value="album">Album</option>
+                        </select>
 
                     </div>
 
@@ -85,10 +86,8 @@
                 <h3 id="apod_title"></h3>
                 <p id="apod_explaination"></p>
                 <br/>
-                <div id="nasa-results" ></div>
 
             </article>
-            
             <article id="brand" class="uk-article uk-width-1-3" id="song">
                 <!-- <h1 class="uk-article-title">Songs and info pop up here + ability to play song</h1> -->
                 <p id="bandName"></p>
@@ -100,17 +99,3 @@
 
     </div>
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <script src="assets/js/uikit.min.js"></script>
-    <script src="assets/js/uikit-icons.min.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
-    
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/frontend.js"></script>
-    <!-- <script src="assets/js/backend.js"></script> -->
-</body>
-
-</html>

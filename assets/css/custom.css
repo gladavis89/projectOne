@@ -30,6 +30,7 @@ article {
 #brand {
     height: 270px;
     margin-top: -290px !important;
+    overflow: scroll;
     
 }
 #main{
@@ -37,7 +38,7 @@ article {
 }
 #results {
     width: 62%;
-    overflow: auto;
+    overflow: scroll;
 }
 #searchform{
     justify-content: center;
@@ -45,6 +46,7 @@ article {
 @media only screen and (max-width: 870px) {
     #brand {
         margin-top: 20px !important;
+        overflow: scroll;
 
     }
     article {
