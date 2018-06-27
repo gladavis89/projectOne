@@ -68,7 +68,7 @@ $(document).ready(function () {
             console.log("It failed");
         }
         }); 
-    });
+   
 
     console.log($("#drop").val())
     console.log($("#input").val())
