@@ -16,12 +16,12 @@ body {
 }
 
 a,
-h1 {
+h1,h2,h3 {
     color: beige !important
 }
 
 article {
-    background-color: rgba(2, 39, 39, 0.479);
+    background-color: rgba(2, 39, 39, 0.801);
     color: beige;
     padding: 20px;
     margin: 20px!important;
