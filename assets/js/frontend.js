@@ -46,16 +46,11 @@ $(document).ready(function () {
   $("#submit").click(function () {
 var input = $("#input").val().trim()
 var artist = $("#artist").val().trim()
-if (input == ""){
-  $("#warning").text("Please enter song title.")
-}
-if (artist == ""){
-  $("#warning").text("Please enter artist.")
-}
-if (artist && input == "") {
+
+if (artist || input == "") {
 $("#warning").text("Please enter both artist and title.")
 }
-
+else {
     console.log("You got music");
         $('#player').empty();
         var musicG = $("#input").val().trim() +","+ $("#artist").val().trim();
@@ -165,11 +160,11 @@ $("#warning").text("Please enter both artist and title.")
             db.ref().push(result); console.log("result pushed to the database")
 
           });
-        }// end success: function (result) {
+        }
+        // end success: function (result) {
       });
-
+    
     })
+  }
   })
-
-});
-
+  })
