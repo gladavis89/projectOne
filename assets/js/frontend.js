@@ -47,7 +47,11 @@ $(document).ready(function () {
 var input = $("#input").val().trim()
 var artist = $("#artist").val().trim()
 
-if (artist || input == "") {
+if (artist == "") {
+  $("#warning").text("Please enter both artist and title.")
+
+}
+if(input == ""){
 $("#warning").text("Please enter both artist and title.")
 }
 else {
