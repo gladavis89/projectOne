@@ -95,7 +95,7 @@ $(document).ready(function () {
       $('#bandName').text("Artist: " + response.track.album.artist);
 
       console.log(response.track.wiki.summary);
-      $('#summary').text("Summary: " + response.track.wiki.summary);
+      $('#summary').html("Summary: " + response.track.wiki.summary);
 
       console.log(response.track.url);
       $('#databaseUrl').attr("href", response.track.url);
