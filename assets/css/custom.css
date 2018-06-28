@@ -28,8 +28,8 @@ article {
 }
 
 #brand {
-    height: 270px;
-    margin-top: -290px !important;
+    height: 470px;
+    margin-top: -490px !important;
     overflow: scroll;
     
 }
@@ -41,6 +41,8 @@ article {
     overflow: scroll;
 }
 #searchform{
+    height: 310px!important;
+    overflow: auto ;
     justify-content: center;
 }
 @media only screen and (max-width: 870px) {

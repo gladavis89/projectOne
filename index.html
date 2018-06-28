@@ -11,7 +11,7 @@
         #body {
             background: url("assets/img/alvaro-pinot-502465-unsplash.jpg");
             background-size: cover;
-            min-height: 960px;
+            min-height: 100%;
 
         }
     </style>
@@ -50,18 +50,19 @@
 
                 <h1 class="uk-article-title">
                     <span uk-icon="icon: search; ratio: 2"></span>Search Menu</h1>
-                <br>
-                <br>
-                <p>Enter your favorite song genre or album. NASA discoveries will generate on the right the date that music
+
+                <p id="warning">Enter your favorite song. NASA discoveries will generate on the right the date that music
                     was released!</p>
-                    <p id="warning"></p>
+                
                 <form class="uk-grid-small uk-form-large" uk-grid>
-                    <div class="uk-width-1-1">
+                    <div class="uk-width-1-2">
                         <input class="uk-input" type="text" placeholder="Song Title" id="input">
                         <label></label>
                         <input class="uk-input" id="artist" type="text" placeholder="Artist">
                     </div>
-                    <div class="uk-width-1-1@s">
+                    <input id="submit" type="button" value="    Submit" class="uk-button uk-button-primary uk-text-center uk-margin-auto uk-width-1-3">
+
+                    <div class="uk-width-1-2@s">
 
 
                         <option id="drop" value="track"></option>
@@ -69,7 +70,6 @@
 
                     </div>
 
-                    <input id="submit" type="button" value="    Submit" class="uk-button uk-button-primary uk-text-center uk-margin-auto">
                 </form>
 
             </article>
