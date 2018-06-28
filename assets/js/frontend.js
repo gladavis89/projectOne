@@ -57,8 +57,8 @@ $ (document).ready (function () {
         'https://api.spotify.com/v1/search?q=track:' +
         musicG +
         '&type=track,artist&limit=1';
-      
-        $.ajax ({
+
+      $.ajax ({
         url: musicUrl,
         method: 'GET',
         headers: {
@@ -89,8 +89,6 @@ $ (document).ready (function () {
       var input = $ ('#input').val ().trim ();
       var option = $ ('#drop').val ().trim ();
       var artist = $ ('#artist').val ().trim ();
-      var album = 'album.getInfo&album=';
-      var song = 'track.getInfo&track=';
 
       $.ajax ({
         url: 'https://ws.audioscrobbler.com//2.0/?method=' +
@@ -105,6 +103,7 @@ $ (document).ready (function () {
         method: 'GET',
       }).then (function (response) {
         console.log (response);
+
         $ ('#nasa-results').empty ();
         console.log (response.track.wiki.published);
         $ ('#publication-date').text (
@@ -124,7 +123,8 @@ $ (document).ready (function () {
 
         var regex = /^([\d]+)[\s]+([A-Za-z]+)[\s]+([\d]+)/;
         var result = response.track.wiki.published.match (regex);
-        var month =  'JanFebMarAprMayJunJulAugSepOctNovDec'.indexOf (result[2]) / 3 + 1;
+        var month =
+          'JanFebMarAprMayJunJulAugSepOctNovDec'.indexOf (result[2]) / 3 + 1;
         if (month < 10) month = '0' + month;
         var newDate = result[3] + '-' + month + '-' + result[1];
         console.log (newDate);
