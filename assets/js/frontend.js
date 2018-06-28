@@ -60,9 +60,10 @@ $(document).ready(function () {
             var music = playlist.tracks.items["0"].uri;
             console.log(music);
             var musicDiv = $("<div>");
+            musicDiv.attr("id", "player");
             var musicIframe = $('<iframe src="https://open.spotify.com/embed?uri=' + music + '" width="300" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media">' + '</iframe>');
             $("#brand").append(musicDiv);
-            musicDiv.append(musicIframe);
+            musicDiv.prepend(musicIframe);
         },
         error: function () {
             console.log("It failed");
