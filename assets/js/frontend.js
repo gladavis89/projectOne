@@ -57,8 +57,8 @@ $("#warning").text("Please enter both artist and title.")
 else {
     console.log("You got music");
         $('#player').empty();
-        var musicG = $("#input").val().trim() +","+ $("#artist").val().trim();
-        var musicUrl = 'https://api.spotify.com/v1/search?q=' + musicG + '&type=track,artist&limit=1'
+        var musicG = $("#input").val().trim() +"%20artist:"+ $("#artist").val().trim();
+        var musicUrl = 'https://api.spotify.com/v1/search?q=track:' + musicG + '&type=track,artist&limit=1'
        $.ajax({
         url: musicUrl,
         method: 'GET',
