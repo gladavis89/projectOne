@@ -44,6 +44,17 @@ $(document).ready(function () {
 
 
   $("#submit").click(function () {
+var input = $("#input").val().trim()
+var artist = $("#artist").val().trim()
+if (input == ""){
+  $("#warning").text("Please enter song title.")
+}
+if (artist == ""){
+  $("#warning").text("Please enter artist.")
+}
+if (artist && input == "") {
+$("#warning").text("Please enter both artist and title.")
+}
 
     console.log("You got music");
         $('#player').empty();
