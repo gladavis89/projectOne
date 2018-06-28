@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     
     
-    var img = "<a href='"+ childSnapshot.val().url +"' target='blank'><img src="+childSnapshot.val().url+" width=200px height=200px></a></div>"
+    var img = "<a href='"+ childSnapshot.val().hdurl +"' target='blank'><img class='uk-margin' src="+childSnapshot.val().url+" width=300px height=300px><div>"+childSnapshot.val().title+"</div></a>"
     $("#results").append(img)
 
   }); // end database.ref().on("child_added", function (childSnapshot, prevChildKey) {}
