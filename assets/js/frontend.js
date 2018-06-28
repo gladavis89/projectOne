@@ -25,19 +25,19 @@ $(document).ready(function () {
       }, {});
     window.location.hash = '';
 
-    Set token
+    // Set token
     let _token = hash.access_token;
 
     const authEndpoint = 'https://accounts.spotify.com/authorize';
 
-    Replace with your app's client ID, redirect URI and desired scopes
+    // Replace with your app's client ID, redirect URI and desired scopes
     const clientId = 'b48b4e2e8c06421e862dce33a2140648';
     const redirectUri = 'https://gladavis89.github.io/projectOne/';
     const scopes = [
       'user-top-read'
     ];
-    &scope=${scopes.join('%20')}&show_dialog=true
-    If there is no token, redirect to Spotify authorization
+    // scope=${scopes.join('%20')}&show_dialog=true
+    // If there is no token, redirect to Spotify authorization
     if (!_token) {
       window.location = `${authEndpoint}?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}`;
     }
