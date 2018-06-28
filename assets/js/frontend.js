@@ -160,7 +160,4 @@ $(document).ready(function () {
   })
 
 });
-<<<<<<< HEAD
-=======
 
->>>>>>> a59a0b46fcda4f7dc47d59bf82d80d7c05e7c4f4
