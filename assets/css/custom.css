@@ -12,9 +12,18 @@ body {
 
 #panel {
     min-height: 100%;
-    margin-bottom: -50px;
-}
+    flex: 1;
 
+}
+footer {
+    margin: auto;
+    color: beige!important;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+}
 a,
 h1,h2,h3 {
     color: beige !important
