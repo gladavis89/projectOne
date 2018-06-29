@@ -176,6 +176,8 @@ $ (document).ready (function () {
 
               db.ref ().push (result);
               console.log ('result pushed to the database');
+
+              $ ('#add-to-fav-button').attr("disabled","");
             }); // end $('#add-to-fav-button').on("click", function (event){
           }, // end success: function (result) {
         }); // end ajax call
